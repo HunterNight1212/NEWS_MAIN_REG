@@ -1,0 +1,20 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+post
+{% endblock title %}
+
+<hr>
+
+{% block content %}
+<h1>Заголовок</h1>
+<h3>{{ post.hat|censore }}</h3>
+<hr>
+<h1>Дата публикации</h1>
+<h3>{{ post.time_create|date:'d, M, Y' }}</h3>
+<hr>
+<h1>Текст новости</h1>
+<h3>{{ post.text|censore }}</h3>
+{% endblock content %}

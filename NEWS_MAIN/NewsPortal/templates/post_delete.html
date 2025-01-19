@@ -1,0 +1,7 @@
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <p>Удаляем '{{ object.hat }}'?</p>
+    <input type="submit" value="delete" />
+</form>
+{% endblock content %}

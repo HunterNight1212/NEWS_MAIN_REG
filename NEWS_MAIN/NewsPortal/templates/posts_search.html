@@ -1,0 +1,35 @@
+{% extends 'default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+<h1>Поиск:</h1>
+{% endblock title %}
+
+<hr>
+
+{% block content %}
+<form action="" method="get">
+    {% csrf_token %}
+    {{ filterset.form.as_p }}
+    <input type="submit" value="Найти" />
+</form>
+
+{% if posts %}
+<table>
+    <tr>
+        <td>автор</td>
+        <td>дата публикации</td>
+        <td>оглавление</td>
+        <td>текст</td>
+    </tr>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.author }}</td>
+        <td>{{ post.time_create }}</td>
+        <td>{{ post.hat|censore }}</td>
+        <td>{{ post.text|censore|truncatewords:6 }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock content %}
